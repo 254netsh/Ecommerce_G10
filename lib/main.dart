@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // List of categories with names and image URLs
   List<Map<String, String>> categories = [
     {'name': 'Electronics', 'image': 'https://tinyurl.com/5d5bwe8a'},
-    {'name': 'Clothing', 'image': 'https://tinyurl.com/2y3hc96z'},
+    {'name': 'Clothing', 'image': 'https://cdn.pixabay.com/photo/2019/03/01/02/48/store-4027251_640.jpg'},
     {'name': 'Shoes', 'image': 'https://tinyurl.com/3b5reu78'},
     {'name': 'Books', 'image': 'https://tinyurl.com/56ketjmw'},
     {'name': 'Home & Kitchen', 'image': 'https://tinyurl.com/4edk89yx'},
@@ -186,11 +186,11 @@ class CategoriesScreen extends StatelessWidget {
     ];
 
     List<Map<String, String>> clothingProducts = [
-      {'name': 'T-Shirt', 'price': '\$20', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Comfortable cotton t-shirt'},
-      {'name': 'Jeans', 'price': '\$40', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Stylish blue jeans'},
-      {'name': 'Jacket', 'price': '\$60', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Warm winter jacket'},
-      {'name': 'Sneakers', 'price': '\$50', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Comfortable running sneakers'},
-      {'name': 'Hat', 'price': '\$15', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Stylish summer hat'},
+      {'name': 'T-Shirt', 'price': '\$20', 'stock': 'Comfortable cotton t-shirt', 'image': 'https://cdn.pixabay.com/photo/2019/07/27/21/42/t-shirt-4367577_640.jpg'},
+      {'name': 'Jeans', 'price': '\$40', 'stock': 'Stylish blue jeans', 'image': 'https://cdn.pixabay.com/photo/2014/08/26/21/49/jeans-428614_1280.jpg'},
+      {'name': 'Jacket', 'price': '\$60', 'stock': 'Warm leather jacket', 'image': 'https://cdn.pixabay.com/photo/2015/07/12/19/23/clothing-842338_640.jpg'},
+      {'name': 'Scarfs', 'price': '\$50', 'stock': 'Beautiful scarfs', 'image': 'https://cdn.pixabay.com/photo/2017/08/20/14/02/colorful-scarves-2661828_640.jpg'},
+      {'name': 'Cowboy Hats', 'price': '\$15', 'stock': 'Quality cowboy hats', 'image': 'https://cdn.pixabay.com/photo/2016/09/16/18/02/for-sale-1674726_640.jpg'},
     ];
 
     List<Map<String, String>> products;
