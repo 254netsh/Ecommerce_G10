@@ -38,12 +38,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // List of categories with names and image URLs
   List<Map<String, String>> categories = [
-    {'name': 'Electronics', 'image': 'https://https://tinyurl.com/5d5bwe8a'},
-    {'name': 'Clothing', 'image': 'https://via.placeholder.com/150'},
-    {'name': 'Shoes', 'image': 'https://via.placeholder.com/150'},
-    {'name': 'Books', 'image': 'https://via.placeholder.com/150'},
-    {'name': 'Home & Kitchen', 'image': 'https://via.placeholder.com/150'},
-    {'name': 'Toys', 'image': 'https://via.placeholder.com/150'},
+    {'name': 'Electronics', 'image': 'https://tinyurl.com/5d5bwe8a'},
+    {'name': 'Clothing', 'image': 'https://tinyurl.com/2y3hc96z'},
+    {'name': 'Shoes', 'image': 'https://tinyurl.com/3b5reu78'},
+    {'name': 'Books', 'image': 'https://tinyurl.com/56ketjmw'},
+    {'name': 'Home & Kitchen', 'image': 'https://tinyurl.com/4edk89yx'},
+    {'name': 'Toys', 'image': 'https://tinyurl.com/mbdc4nt9'},
   ];
 
   List<Map<String, String>> displayedCategories = []; // List of categories to display
