@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 import 'catalogue.dart';
 import 'products.dart';
+import 'SinupPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(),
+        '/': (context) => SignupPage(),
         '/catalogue': (context) => CataloguePage(),
         '/products': (context) => ProductsPage(),
       },

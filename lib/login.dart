@@ -70,8 +70,12 @@ class _LoginFormState extends State<LoginForm> {
                 _formKey.currentState!.save();
                 // Perform login logic here
                 print('Email: $_email, Password: $_password');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CataloguePage()),
+                );
               }
-            },
+            }, // This was missing
             child: const Text('Login'),
           ),
         ],
