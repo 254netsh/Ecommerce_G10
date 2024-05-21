@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     {'name': 'Clothing', 'image': 'https://cdn.pixabay.com/photo/2019/03/01/02/48/store-4027251_640.jpg'},
     {'name': 'Shoes', 'image': 'https://tinyurl.com/3b5reu78'},
     {'name': 'Books', 'image': 'https://tinyurl.com/56ketjmw'},
-    {'name': 'Home & Kitchen', 'image': 'https://tinyurl.com/4edk89yx'},
+    {'name': 'Home & Kitchen', 'image': 'https://cdn.pixabay.com/photo/2019/09/18/17/19/village-shop-4487285_640.jpg'},
     {'name': 'Toys', 'image': 'https://tinyurl.com/mbdc4nt9'},
   ];
 
@@ -193,6 +193,38 @@ class CategoriesScreen extends StatelessWidget {
       {'name': 'Cowboy Hats', 'price': '\$15', 'stock': 'Quality cowboy hats', 'image': 'https://cdn.pixabay.com/photo/2016/09/16/18/02/for-sale-1674726_640.jpg'},
     ];
 
+    List<Map<String, String>> shoesProducts = [
+      {'name': 'Running Shoes', 'price': '\$120', 'stock': 'Comfortable running shoes', 'image': 'https://cdn.pixabay.com/photo/2015/02/09/13/40/shoe-629643_640.jpg'},
+      {'name': 'Sneakers', 'price': '\$80', 'stock': 'Stylish sneakers', 'image': 'https://cdn.pixabay.com/photo/2017/09/20/22/22/sneakers-2770092_640.png'},
+      {'name': 'Formal Shoes', 'price': '\$150', 'stock': 'Elegant formal shoes', 'image': 'https://cdn.pixabay.com/photo/2017/11/11/18/45/fashion-2939996_640.jpg'},
+      {'name': 'Sandals', 'price': '\$40', 'stock': 'Comfortable summer sandals', 'image': 'https://cdn.pixabay.com/photo/2014/05/30/05/00/shoes-357897_640.jpg'},
+      {'name': 'Boots', 'price': '\$180', 'stock': 'Durable boots', 'image': 'https://cdn.pixabay.com/photo/2017/05/07/18/34/cowboy-boots-2293164_640.jpg'},
+    ];
+
+    List<Map<String, String>> booksProducts = [
+      {'name': 'Novel', 'price': '\$10', 'stock': 'Bestselling novels', 'image': 'https://cdn.pixabay.com/photo/2018/11/13/18/04/books-3813612_640.jpg'},
+      {'name': 'Biography', 'price': '\$15', 'stock': 'Inspiring biography', 'image': 'https://cdn.pixabay.com/photo/2018/04/16/10/02/flea-market-3324131_640.jpg'},
+      {'name': 'Science Fiction', 'price': '\$12', 'stock': 'Exciting sci-fi book', 'image': 'https://cdn.pixabay.com/photo/2021/09/14/10/18/books-6623568_640.jpg'},
+      {'name': 'Cookbook', 'price': '\$20', 'stock': 'Popular cookbook', 'image': 'https://cdn.pixabay.com/photo/2015/04/29/19/33/cookbook-746005_640.jpg'},
+      {'name': 'Children\'s Book', 'price': '\$8', 'stock': 'Colorful children\'s book', 'image': 'https://cdn.pixabay.com/photo/2013/05/02/10/53/picture-108539_640.jpg'},
+    ];
+
+    List<Map<String, String>> homeKitchenProducts = [
+      {'name': 'Blender', 'price': '\$50', 'stock': 'High-speed blender', 'image': 'https://cdn.pixabay.com/photo/2011/12/05/14/30/blender-10932_640.jpg'},
+      {'name': 'Microwave', 'price': '\$100', 'stock': 'Compact microwave oven', 'image': 'https://cdn.pixabay.com/photo/2020/05/08/09/23/appliance-5144884_640.jpg'},
+      {'name': 'Wooden utensils', 'price': '\$80', 'stock': 'Quality wooden utensils', 'image': 'https://cdn.pixabay.com/photo/2021/11/26/19/25/wooden-kitchen-utensils-6826540_640.jpg'},
+      {'name': 'Coffee Maker', 'price': '\$60', 'stock': 'Coffee maker', 'image': 'https://cdn.pixabay.com/photo/2017/04/11/02/00/kettle-2220369_640.jpg'},
+      {'name': 'Vacuum Cleaner', 'price': '\$150', 'stock': 'Powerful vacuum cleaner', 'image': 'https://cdn.pixabay.com/photo/2015/03/03/18/39/vacuum-cleaner-657719_640.jpg'},
+    ];
+
+    List<Map<String, String>> toysProducts = [
+      {'name': 'Lego Set', 'price': '\$40', 'stock': 'Creative Lego blocks', 'image': 'https://cdn.pixabay.com/photo/2017/06/30/15/53/lego-blocks-2458575_640.jpg'},
+      {'name': 'Action Figure', 'price': '\$25', 'stock': 'Popular action figure', 'image': 'https://cdn.pixabay.com/photo/2022/08/23/13/52/toys-7405811_640.jpg'},
+      {'name': 'Board Game', 'price': '\$30', 'stock': 'Family board game', 'image': 'https://cdn.pixabay.com/photo/2021/11/27/21/09/bunny-kingdom-6828907_640.jpg'},
+      {'name': 'Doll', 'price': '\$20', 'stock': 'Beautiful doll', 'image': 'https://cdn.pixabay.com/photo/2016/12/20/23/47/doll-1921810_640.jpg'},
+      {'name': 'Puzzle', 'price': '\$15', 'stock': 'Challenging puzzle', 'image': 'https://cdn.pixabay.com/photo/2015/03/01/16/52/puzzle-654957_640.jpg'},
+    ];
+
     List<Map<String, String>> products;
 
     switch (category) {
@@ -201,6 +233,18 @@ class CategoriesScreen extends StatelessWidget {
         break;
       case 'Clothing':
         products = clothingProducts;
+        break;
+      case 'Shoes':
+        products = shoesProducts;
+        break;
+      case 'Books':
+        products = booksProducts;
+        break;
+      case 'Home & Kitchen':
+        products = homeKitchenProducts;
+        break;
+      case 'Toys':
+        products = toysProducts;
         break;
       default:
         products = [];
