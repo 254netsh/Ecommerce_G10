@@ -38,12 +38,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // List of categories with names and image URLs
   List<Map<String, String>> categories = [
-    {'name': 'Electronics', 'image': 'https://tinyurl.com/5d5bwe8a'},
-    {'name': 'Clothing', 'image': 'https://tinyurl.com/2y3hc96z'},
-    {'name': 'Shoes', 'image': 'https://tinyurl.com/3b5reu78'},
-    {'name': 'Books', 'image': 'https://tinyurl.com/56ketjmw'},
-    {'name': 'Home & Kitchen', 'image': 'https://tinyurl.com/4edk89yx'},
-    {'name': 'Toys', 'image': 'https://tinyurl.com/mbdc4nt9'},
+    {'name': 'Electronics', 'image': 'https://https://tinyurl.com/5d5bwe8a'},
+    {'name': 'Clothing', 'image': 'https://via.placeholder.com/150'},
+    {'name': 'Shoes', 'image': 'https://via.placeholder.com/150'},
+    {'name': 'Books', 'image': 'https://via.placeholder.com/150'},
+    {'name': 'Home & Kitchen', 'image': 'https://via.placeholder.com/150'},
+    {'name': 'Toys', 'image': 'https://via.placeholder.com/150'},
   ];
 
   List<Map<String, String>> displayedCategories = []; // List of categories to display
@@ -177,13 +177,35 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Dummy list of products with details
-    List<Map<String, String>> products = [
-      {'name': 'Product 1', 'price': '\$100', 'stock': 'In Stock', 'description': 'Description 1'},
-      {'name': 'Product 2', 'price': '\$150', 'stock': 'In Stock', 'description': 'Description 2'},
-      {'name': 'Product 3', 'price': '\$200', 'stock': 'Out of Stock', 'description': 'Description 3'},
-      {'name': 'Product 4', 'price': '\$250', 'stock': 'In Stock', 'description': 'Description 4'},
-      {'name': 'Product 5', 'price': '\$300', 'stock': 'In Stock', 'description': 'Description 5'},
+    List<Map<String, String>> electronicsProducts = [
+      {'name': 'Laptop', 'price': '\$1000', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'High performance laptop'},
+      {'name': 'Smartphone', 'price': '\$800', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Latest model smartphone'},
+      {'name': 'Headphones', 'price': '\$150', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Noise-cancelling headphones'},
+      {'name': 'Camera', 'price': '\$500', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'High resolution camera'},
+      {'name': 'Smartwatch', 'price': '\$200', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Water-resistant smartwatch'},
     ];
+
+    List<Map<String, String>> clothingProducts = [
+      {'name': 'T-Shirt', 'price': '\$20', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Comfortable cotton t-shirt'},
+      {'name': 'Jeans', 'price': '\$40', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Stylish blue jeans'},
+      {'name': 'Jacket', 'price': '\$60', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Warm winter jacket'},
+      {'name': 'Sneakers', 'price': '\$50', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Comfortable running sneakers'},
+      {'name': 'Hat', 'price': '\$15', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Stylish summer hat'},
+    ];
+
+    List<Map<String, String>> products;
+
+    switch (category) {
+      case 'Electronics':
+        products = electronicsProducts;
+        break;
+      case 'Clothing':
+        products = clothingProducts;
+        break;
+      default:
+        products = [];
+        break;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -209,27 +231,31 @@ class CategoriesScreen extends StatelessWidget {
             },
             child: Card(
               elevation: 3.0, // Elevation of the card
-              child: Padding(
-                padding: const EdgeInsets.all(8.0), // Padding around the text
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center, // Center the content
-                  children: [
-                    Text(
+              child: Column(
+                children: [
+                  Expanded(
+                    // Display product image
+                    child: Image.network(
+                      products[index]['image']!,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0), // Padding around the text
+                    child: Text(
                       products[index]['name']!, // Display product name
                       style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 10),
-                    Text(
-                      products[index]['price']!, // Display product price
-                      style: const TextStyle(fontSize: 16.0),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      products[index]['stock']!, // Display product stock status
-                      style: const TextStyle(fontSize: 14.0, color: Colors.grey),
-                    ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    products[index]['price']!, // Display product price
+                    style: const TextStyle(fontSize: 16.0),
+                  ),
+                  Text(
+                    products[index]['stock']!, // Display product stock status
+                    style: const TextStyle(fontSize: 14.0, color: Colors.grey),
+                  ),
+                ],
               ),
             ),
           );
