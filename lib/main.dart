@@ -178,11 +178,11 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Dummy list of products with details
     List<Map<String, String>> electronicsProducts = [
-      {'name': 'Laptop', 'price': '\$1000', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'High performance laptop'},
-      {'name': 'Smartphone', 'price': '\$800', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Latest model smartphone'},
-      {'name': 'Headphones', 'price': '\$150', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Noise-cancelling headphones'},
-      {'name': 'Camera', 'price': '\$500', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'High resolution camera'},
-      {'name': 'Smartwatch', 'price': '\$200', 'stock': 'In Stock', 'image': 'https://via.placeholder.com/150', 'description': 'Water-resistant smartwatch'},
+      {'name': 'Laptop', 'price': '\$1000', 'stock': 'In Stock', 'image': 'https://cdn.pixabay.com/photo/2017/11/27/21/31/computer-2982270_640.jpg', 'description': 'High performance laptop'},
+      {'name': 'Smartphone', 'price': '\$800', 'stock': 'In Stock', 'image': 'https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_640.png', 'description': 'Latest model smartphone'},
+      {'name': 'Headphones', 'price': '\$150', 'stock': 'In Stock', 'image': 'https://cdn.pixabay.com/photo/2018/09/17/14/27/headphones-3683983_640.jpg', 'description': 'Noise-cancelling headphones'},
+      {'name': 'Camera', 'price': '\$500', 'stock': 'In Stock', 'image': 'https://cdn.pixabay.com/photo/2023/11/14/15/46/nikon-8388022_640.jpg', 'description': 'High resolution camera'},
+      {'name': 'Smartwatch', 'price': '\$200', 'stock': 'In Stock', 'image': 'https://cdn.pixabay.com/photo/2018/10/02/11/44/huawei-3718609_640.jpg', 'description': 'Huawei smartwatch'},
     ];
 
     List<Map<String, String>> clothingProducts = [
