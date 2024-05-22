@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body:const Center(
+      body: const Center(
         child: LoginForm(),
       ),
     );
@@ -78,19 +78,21 @@ class _LoginFormState extends State<LoginForm> {
                       print('Email: $_email, Password: $_password');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CataloguePage()),
+                        MaterialPageRoute(
+                            builder: (context) => CataloguePage()),
                       );
                     }
                   }, // This was missing
                   child: const Text('Login'),
                 ),
                 ElevatedButton(
-                  onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder:(context) => const SignupPage()));
-                }, 
-                child: const Text('Signup'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupPage()));
+                  },
+                  child: const Text('Signup'),
                 ),
               ],
             ),
