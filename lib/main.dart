@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 import 'catalogue.dart';
 import 'products.dart';
-import 'SinupPage.dart';
+import 'SingUpPage.dart';
 
 void main() {
   runApp(MyApp());
