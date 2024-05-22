@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
 class SignupPage extends StatelessWidget {
-  const SignupPage({Key? key}) : super(key: key);
+  const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class SignupPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Signup'),
       ),
-      body: Center(
+      body: const Center(
         child: SignupForm(),
       ),
     );
@@ -19,9 +19,10 @@ class SignupPage extends StatelessWidget {
 
 // Signup form
 class SignupForm extends StatefulWidget {
-  const SignupForm({Key? key}) : super(key: key);
+  const SignupForm({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SignupFormState createState() => _SignupFormState();
 }
 
@@ -37,13 +38,13 @@ class _SignupFormState extends State<SignupForm> {
         children: [
           TextField(
             controller: _emailController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Email',
             ),
           ),
           TextField(
             controller: _passwordController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Password',
             ),
             obscureText: true,
@@ -58,7 +59,7 @@ class _SignupFormState extends State<SignupForm> {
               // After signup logic, navigate to LoginPage
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => LoginPage()),
+                MaterialPageRoute(builder: (context) => const LoginPage()),
               );
             },
             child: const Text('Signup'),
