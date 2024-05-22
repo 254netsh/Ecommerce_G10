@@ -24,6 +24,7 @@ class ProductsPage extends StatelessWidget {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
+            Image.asset('images/electric.png'),
             Text(
               product['price']!,
               style: TextStyle(fontSize: 20, color: Colors.green),
