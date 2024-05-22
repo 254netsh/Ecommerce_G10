@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({Key? key}) : super(key: key);
+  const CartScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CartScreenState createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
   // Dummy data for cart items
-  List<Map<String, dynamic>> _cartItems = [
+  final List<Map<String, dynamic>> _cartItems = [
     {'name': 'Product 1', 'price': 100, 'image': 'https://example.com/product1.jpg', 'quantity': 1},
     {'name': 'Product 2', 'price': 150, 'image': 'https://example.com/product2.jpg', 'quantity': 2},
-    // Add more items as needed
   ];
 
+  // ignore: unused_element
   void _addToCart(Map<String, dynamic> product) {
     setState(() {
       _cartItems.add(product);
@@ -23,7 +24,7 @@ class _CartScreenState extends State<CartScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Item Added to Cart'),
+          title: const Text('Item Added to Cart'),
           content: Text('${product['name']} has been added to your cart.'),
           actions: [
             TextButton(
@@ -66,7 +67,7 @@ class _CartScreenState extends State<CartScreen> {
                     title: Text(item['name']),
                     subtitle: Text('Price: \$${item['price']} x ${item['quantity']}'),
                     trailing: IconButton(
-                      icon: Icon(Icons.remove_circle),
+                      icon: const Icon(Icons.remove_circle),
                       onPressed: () => _removeFromCart(index),
                     ),
                   ),
@@ -77,7 +78,7 @@ class _CartScreenState extends State<CartScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text('Total Price: \$${totalPrice.toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -85,7 +86,7 @@ class _CartScreenState extends State<CartScreen> {
               onPressed: () {
                 // Implement payment functionality
               },
-              child: Text('Proceed to Payment'),
+              child: const Text('Proceed to Payment'),
             ),
           ),
         ],
