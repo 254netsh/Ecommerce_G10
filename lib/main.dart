@@ -1,10 +1,18 @@
 // Importing the necessary Flutter material package
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'providers/cart_provider.dart'; 
 import 'cart.dart';
 
 void main() {
-  // Entry point of the application, runApp function starts the app
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 // MyApp class which is the root of the application

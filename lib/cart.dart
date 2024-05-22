@@ -1,90 +1,106 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'providers/cart_provider.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({super.key});
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _CartScreenState createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
-  // Dummy data for cart items
-  final List<Map<String, dynamic>> _cartItems = [
-    {'name': 'Product 1', 'price': 100, 'image': 'https://example.com/product1.jpg', 'quantity': 1},
-    {'name': 'Product 2', 'price': 150, 'image': 'https://example.com/product2.jpg', 'quantity': 2},
-  ];
-
-  // ignore: unused_element
-  void _addToCart(Map<String, dynamic> product) {
-    setState(() {
-      _cartItems.add(product);
-    });
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Item Added to Cart'),
-          content: Text('${product['name']} has been added to your cart.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _removeFromCart(int index) {
-    setState(() {
-      _cartItems.removeAt(index);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    double totalPrice = _cartItems.fold(0, (sum, item) => sum + (item['price'] * item['quantity']));
+    final cartProvider = Provider.of<CartProvider>(context); // Access CartProvider
+
+    double totalPrice = cartProvider.calculateTotalPrice(); // Calculate total price
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cart'),
         centerTitle: true,
       ),
+      
       body: Column(
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: _cartItems.length,
+              itemCount: cartProvider.cartItems.length > 0 ? cartProvider.cartItems.length : 1, // Check if cart is empty
               itemBuilder: (context, index) {
-                final item = _cartItems[index];
-                return Card(
-                  child: ListTile(
-                    leading: Image.network(item['image']),
-                    title: Text(item['name']),
-                    subtitle: Text('Price: \$${item['price']} x ${item['quantity']}'),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.remove_circle),
-                      onPressed: () => _removeFromCart(index),
+                if (cartProvider.cartItems.isEmpty) {
+                  // Display placeholder image and buttons if cart is empty
+                  return Card(
+                    child: ListTile(
+                      leading: Icon(Icons.shopping_cart), // Placeholder icon
+                      title: Text('No items in cart'),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.add_circle),
+                            onPressed: () {
+                              // Implement logic to add item to cart
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.remove_circle),
+                            onPressed: () {
+                              // Implement logic to remove item from cart
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
+                  );
+                } else {
+                  // Display actual product image and buttons if cart is not empty
+                  final item = cartProvider.cartItems[index];
+                  return Card(
+                    child: ListTile(
+                      leading: Image.network(item['image']), // Product image
+                      title: Text(item['name']),
+                      subtitle: Text('Price: \$${item['price']} x ${item['quantity']}'),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.remove_circle),
+                            onPressed: () => cartProvider.removeFromCart(index), // Remove from cart
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.add_circle),
+                            onPressed: () {
+                              // Get the current quantity of the item
+                              int currentQuantity = cartProvider.cartItems[index]['quantity'];
+                              
+                              // Increase the quantity by 1
+                              int newQuantity = currentQuantity + 1;
+
+                              // Call the updateQuantity method of CartProvider to update the quantity
+                              cartProvider.updateQuantity(index, newQuantity);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
               },
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Total Price: \$${totalPrice.toStringAsFixed(2)}',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Text(
+              'Total Price: \$${totalPrice.toStringAsFixed(2)}',
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
-                // Implement payment functionality
+                // Proceed to payment
               },
               child: const Text('Proceed to Payment'),
             ),
