@@ -30,24 +30,31 @@ class _CartScreenState extends State<CartScreen> {
               itemBuilder: (context, index) {
                 if (cartProvider.cartItems.isEmpty) {
                   // Display placeholder image and buttons if cart is empty
-                  return Card(
-                    child: ListTile(
-                      leading: Icon(Icons.shopping_cart), // Placeholder icon
-                      title: Text('No items in cart'),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
+                  return Container(
+                    height: 250, // Set height of the container
+                    width: 150, // Set width of the container
+                    child: Card(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          IconButton(
-                            icon: const Icon(Icons.add_circle),
-                            onPressed: () {
-                              // Implement logic to add item to cart
-                            },
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.remove_circle),
-                            onPressed: () {
-                              // Implement logic to remove item from cart
-                            },
+                          Icon(Icons.shopping_cart, size: 100), // Placeholder icon
+                          Text('No items in cart', style: TextStyle(fontSize: 16)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.add_circle),
+                                onPressed: () {
+                                  // Implement logic to add item to cart
+                                },
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.remove_circle),
+                                onPressed: () {
+                                  // Implement logic to remove item from cart
+                                },
+                              ),
+                            ],
                           ),
                         ],
                       ),
