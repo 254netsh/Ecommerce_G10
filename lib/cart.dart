@@ -25,7 +25,7 @@ class CartPage extends StatelessWidget {
                     onPressed: () {
                       context
                           .read<CartProvider>()
-                          .removeFromCart(cart[index] as int);
+                          .removeFromCart(cart[index]);
                     },
                   ),
                 );

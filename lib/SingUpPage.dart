@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
 class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class SignupPage extends StatelessWidget {
 
 // Signup form
 class SignupForm extends StatefulWidget {
-  const SignupForm({super.key});
+  const SignupForm({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
