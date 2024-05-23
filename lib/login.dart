@@ -23,7 +23,6 @@ class LoginPage extends StatelessWidget {
 //login form
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
-
   @override
   _LoginFormState createState() => _LoginFormState();
 }
