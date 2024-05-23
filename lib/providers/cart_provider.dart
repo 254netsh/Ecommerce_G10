@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CartProvider with ChangeNotifier {
-  final List<Map<String, dynamic>> _cartItems = [];
+  final List<Map<String, String>> _cartItems = [];
 
-  List<Map<String, dynamic>> get cartItems => _cartItems;
+  List<Map<String, String>> get cartItems => _cartItems;
 
-  void addToCart(Map<String, dynamic> product) {
+  void addToCart(Map<String, String> product) {
     _cartItems.add(product);
     notifyListeners();
   }
@@ -14,7 +14,7 @@ class CartProvider with ChangeNotifier {
     _cartItems.removeAt(index);
     notifyListeners();
   }
-
+/*
   void updateQuantity(int index, int newQuantity) {
   if (index >= 0 && index < _cartItems.length) {
     _cartItems[index]['quantity'] = newQuantity;
@@ -33,5 +33,5 @@ class CartProvider with ChangeNotifier {
       total += item['price'] * item['quantity'];
     }
     return total;
-  }
+  }*/
 }

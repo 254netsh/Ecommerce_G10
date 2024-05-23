@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'providers/cart_provider.dart';
 
 class CataloguePage extends StatelessWidget {
   @override
@@ -59,7 +61,15 @@ class CataloguePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Catalogue'),
+        title: const Text('Catalogue'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.pushNamed(context, '/cart');
+            },
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: categories.length,

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopeasy/providers/cart_provider.dart';
+import 'providers/cart_provider.dart';
 
 class ProductsPage extends StatelessWidget {
+  const ProductsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final Map<String, dynamic> arguments =
@@ -18,26 +23,35 @@ class ProductsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(product['image']!),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               product['name']!,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Image.asset('images/electric.png'),
             Text(
               product['price']!,
-              style: TextStyle(fontSize: 20, color: Colors.green),
+              style: const TextStyle(fontSize: 20, color: Colors.green),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               product['stock']!,
-              style: TextStyle(fontSize: 16, color: Colors.red),
+              style: const TextStyle(fontSize: 16, color: Colors.red),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               product['description']!,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.read<CartProvider>().addToCart(product);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('${product['name']} added to cart')),
+                );
+              },
+              child: const Text('Add to Cart'),
             ),
           ],
         ),
