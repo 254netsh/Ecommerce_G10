@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SignupPage(),
         '/catalogue': (context) => CataloguePage(),
-        '/products': (context) => ProductsPage(category: '', products: []), // This won't be used directly
+        '/products': (context) => ProductsPage(
+            category: '', products: []), // This won't be used directly
         '/cart': (context) => CartPage(),
       },
     );
