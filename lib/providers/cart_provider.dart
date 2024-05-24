@@ -14,4 +14,24 @@ class CartProvider with ChangeNotifier {
     _cartItems.remove(product);
     notifyListeners();
   }
+
+  void incrementQuantity(int index) {
+    if (index >= 0 && index < _cartItems.length) {
+      int currentQuantity = int.tryParse(_cartItems[index]['quantity'] ?? '0') ?? 0;
+      currentQuantity++;
+      _cartItems[index]['quantity'] = currentQuantity.toString();
+      notifyListeners();
+    }
+  }
+
+  void decrementQuantity(int index) {
+    if (index >= 0 && index < _cartItems.length) {
+      int currentQuantity = int.tryParse(_cartItems[index]['quantity'] ?? '0') ?? 0;
+      if (currentQuantity > 0) {
+        currentQuantity--;
+        _cartItems[index]['quantity'] = currentQuantity.toString();
+        notifyListeners();
+      }
+    }
+  }
 }

@@ -13,23 +13,49 @@ class CartPage extends StatelessWidget {
       ),
       body: cart.isEmpty
           ? Center(child: Text('Your cart is empty.'))
-          : ListView.builder(
-              itemCount: cart.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  leading: Image.network(cart[index]['image']!),
-                  title: Text(cart[index]['name']!),
-                  subtitle: Text(cart[index]['price']!),
-                  trailing: IconButton(
-                    icon: Icon(Icons.remove_shopping_cart),
-                    onPressed: () {
-                      context
-                          .read<CartProvider>()
-                          .removeFromCart(cart[index]);
-                    },
+          : Column(
+              children: cart.map((item) {
+                return Card(
+                  margin: EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.network(item['image']!),
+                        SizedBox(height: 8.0),
+                        Text(item['name']!),
+                        Text('Price: ${item['price']}'),
+                        Text('Quantity: ${item['quantity']}'),
+                        SizedBox(height: 8.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.add),
+                              onPressed: () {
+                                context.read<CartProvider>().incrementQuantity(cart.indexOf(item));
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.remove),
+                              onPressed: () {
+                                context.read<CartProvider>().decrementQuantity(cart.indexOf(item));
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.delete),
+                              onPressed: () {
+                                context.read<CartProvider>().removeFromCart(item);
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 );
-              },
+              }).toList(),
             ),
     );
   }
