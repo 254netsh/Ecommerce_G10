@@ -10,12 +10,12 @@ class CartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
+        title: const Text('Cart'),
       ),
       body: cart.isEmpty
-          ? Center(child: Text('Your cart is empty.'))
+          ? const Center(child: Text('Your cart is empty.'))
           : GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, // Adjust as needed
                 crossAxisSpacing: 8.0,
                 mainAxisSpacing: 8.0,
@@ -23,7 +23,7 @@ class CartPage extends StatelessWidget {
               itemCount: cart.length,
               itemBuilder: (context, index) {
                 return Card(
-                  margin: EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -35,28 +35,28 @@ class CartPage extends StatelessWidget {
                           width: double.infinity,
                           fit: BoxFit.cover,
                         ),
-                        SizedBox(height: 8.0),
+                        const SizedBox(height: 8.0),
                         Text(cart[index]['name']!),
                         Text('Price: ${cart[index]['price']}'),
                         Text('Quantity: ${cart[index]['quantity']}'),
-                        SizedBox(height: 8.0),
+                        const SizedBox(height: 8.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             IconButton(
-                              icon: Icon(Icons.add),
+                              icon: const Icon(Icons.add),
                               onPressed: () {
                                 context.read<CartProvider>().incrementQuantity(index);
                               },
                             ),
                             IconButton(
-                              icon: Icon(Icons.remove),
+                              icon: const Icon(Icons.remove),
                               onPressed: () {
                                 context.read<CartProvider>().decrementQuantity(index);
                               },
                             ),
                             IconButton(
-                              icon: Icon(Icons.delete),
+                              icon: const Icon(Icons.delete),
                               onPressed: () {
                                 context.read<CartProvider>().removeFromCart(cart[index]);
                               },
@@ -74,7 +74,7 @@ class CartPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             'Total Price: \$${totalPrice.toStringAsFixed(2)}',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
