@@ -1,21 +1,30 @@
-// Importing the necessary Flutter material package
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'login.dart';
+import 'catalogue.dart';
+import 'products.dart';
+import 'SingUpPage.dart';
+import 'cart.dart';
+import 'providers/cart_provider.dart';
 
 void main() {
-  // Entry point of the application, runApp function starts the app
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CartProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
-// MyApp class which is the root of the application
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    // MaterialApp provides the structure for the app
     return MaterialApp(
-      title: 'Shopeasy', // Title of the application
+      title: 'shopeasy',
       theme: ThemeData(
+<<<<<<< HEAD
         primarySwatch: Colors.blue, // Primary color theme
         scaffoldBackgroundColor: const Color(0xFFF5F5DC), // Background color
       ),
@@ -326,43 +335,18 @@ class CategoriesScreen extends StatelessWidget {
             ),
           ],
         );
+=======
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => SignupPage(),
+        '/catalogue': (context) => CataloguePage(),
+        '/products': (context) => ProductsPage(
+            category: '', products: []), // This won't be used directly
+        '/cart': (context) => CartPage(),
+>>>>>>> d0b9aaee5d932cab188c946d0d640d30073eeed0
       },
-    );
-  }
-}
-
-// Dummy ProfileScreen class to represent the user profile
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'), // Title of the app bar
-        centerTitle: true, // Center the title
-      ),
-      body: const Center(
-        child: Text('User Profile Screen'), // Text content of the profile screen
-      ),
-    );
-  }
-}
-
-// Dummy CartScreen class to represent the shopping cart
-class CartScreen extends StatelessWidget {
-  const CartScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cart'), // Title of the app bar
-        centerTitle: true, // Center the title
-      ),
-      body: const Center(
-        child: Text('Shopping Cart Screen'), // Text content of the shopping cart screen
-      ),
     );
   }
 }
