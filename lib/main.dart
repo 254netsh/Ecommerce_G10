@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'intro_screen.dart';
 import 'login.dart';
 import 'catalogue.dart';
 import 'products.dart';
-import 'SingUpPage.dart';
+import 'signup_page.dart';
 import 'cart.dart';
 import 'providers/cart_provider.dart';
+import 'intro_screen.dart'; // Import IntroScreen
 
 void main() {
   runApp(
@@ -28,7 +30,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => SignupPage(),
+        '/': (context) => IntroScreen(), // Set IntroScreen as the initial route
+        '/signup': (context) => SignupPage(),
         '/catalogue': (context) => CataloguePage(),
         '/products': (context) => ProductsPage(
             category: '', products: []), // This won't be used directly
