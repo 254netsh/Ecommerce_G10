@@ -38,7 +38,6 @@ class IntroScreen extends StatelessWidget {
               ),
 
               // sub-tittle
-            
               Text(
                 'Quality Products',
                 textAlign: TextAlign.center,
