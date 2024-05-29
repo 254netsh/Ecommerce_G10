@@ -24,7 +24,7 @@ class IntroScreen extends StatelessWidget {
                 child: Image.asset('images/cartlogo.png'),
               ),
 
-              // we deliver Products at your doorstep
+              // main tittle
               Padding(
                 padding: const EdgeInsets.all(28.0),
                 child: Text(
@@ -37,7 +37,8 @@ class IntroScreen extends StatelessWidget {
                 ),
               ),
 
-              // Quality Products
+              // sub-tittle
+            
               Text(
                 'Quality Products',
                 textAlign: TextAlign.center,
