@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'products.dart';
 
 class CataloguePage extends StatelessWidget {
@@ -86,8 +87,6 @@ class CataloguePage extends StatelessWidget {
             'description': 'Quality cowboy hats',
             'image': 'https://cdn.pixabay.com/photo/2016/09/16/18/02/for-sale-1674726_640.jpg'
           },
-         
-          
         ],
       },
       {
@@ -101,28 +100,28 @@ class CataloguePage extends StatelessWidget {
             'description': 'High-speed blender',
             'image': 'https://cdn.pixabay.com/photo/2011/12/05/14/30/blender-10932_640.jpg'
           },
-            {
+          {
             'name': 'Microwave',
             'price': '\$300',
             'stock': 'In Stock',
             'description': 'Compact microwave oven',
             'image': 'https://cdn.pixabay.com/photo/2020/05/08/09/23/appliance-5144884_640.jpg'
           },
-            {
+          {
             'name': 'Coffee maker',
             'price': '\$400',
             'stock': 'In Stock',
             'description': 'Coffee maker',
             'image': 'https://cdn.pixabay.com/photo/2017/04/11/02/00/kettle-2220369_640.jpg'
           },
-            {
+          {
             'name': 'Utensils',
             'price': '\$100',
             'stock': 'In Stock',
             'description': 'Quality wooden utensils',
             'image': 'https://cdn.pixabay.com/photo/2021/11/26/19/25/wooden-kitchen-utensils-6826540_640.jpg'
           },
-            {
+          {
             'name': 'Vacuum cleaner',
             'price': '\$500',
             'stock': 'In Stock',
@@ -135,12 +134,21 @@ class CataloguePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Catalogue'),
+        title: const Text('Catalogue', style: TextStyle(fontWeight: FontWeight.bold)),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF6D5DD7), Color(0xFF4890E0)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         actions: [
           Container(
-            margin: const EdgeInsets.only(right: 50),
+            margin: const EdgeInsets.only(right: 16),
             child: IconButton(
-              icon: const Icon(Icons.shopping_cart),
+              icon: const Icon(Icons.shopping_cart, color: Colors.white),
               onPressed: () {
                 Navigator.pushNamed(context, '/cart');
               },
@@ -148,18 +156,18 @@ class CataloguePage extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              leading: Image.network(
-                categories[index]['image']!,
-                width: 50,
-                height: 50,
-                fit: BoxFit.cover,
-              ),
-              title: Text(categories[index]['name']),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.builder(
+          itemCount: categories.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // Number of columns
+            crossAxisSpacing: 10.0,
+            mainAxisSpacing: 10.0,
+            childAspectRatio: 2 / 3,
+          ),
+          itemBuilder: (context, index) {
+            return GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
@@ -171,9 +179,49 @@ class CataloguePage extends StatelessWidget {
                   ),
                 );
               },
-            ),
-          );
-        },
+              child: Card(
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                        child: Image.network(
+                          categories[index]['image']!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(10)),
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF6D5DD7), Color(0xFF4890E0)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
+                      child: Text(
+                        categories[index]['name'],
+                        style: GoogleFonts.notoSerif(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
