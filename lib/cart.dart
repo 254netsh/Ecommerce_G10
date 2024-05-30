@@ -29,17 +29,32 @@ class CartPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.network(
-                          cart[index]['image']!,
-                          height: 200, // Adjust as needed
-                          width: double.infinity,
-                          fit: BoxFit.cover,
+                        Expanded(
+                          child: Image.network(
+                            cart[index]['image']!,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Center(
+                                child: Icon(
+                                  Icons.broken_image,
+                                  size: 50,
+                                  color: Colors.grey,
+                                ),
+                              );
+                            },
+                          ),
                         ),
                         const SizedBox(height: 8.0),
-                        Text(cart[index]['name']!),
+                        Text(
+                          cart[index]['name']!,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         Text('Price: ${cart[index]['price']}'),
                         Text('Quantity: ${cart[index]['quantity']}'),
-                        const SizedBox(height: 8.0),
+                        const Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
