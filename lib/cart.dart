@@ -46,19 +46,25 @@ class CartPage extends StatelessWidget {
                             IconButton(
                               icon: const Icon(Icons.add),
                               onPressed: () {
-                                context.read<CartProvider>().incrementQuantity(index);
+                                context
+                                    .read<CartProvider>()
+                                    .incrementQuantity(index);
                               },
                             ),
                             IconButton(
                               icon: const Icon(Icons.remove),
                               onPressed: () {
-                                context.read<CartProvider>().decrementQuantity(index);
+                                context
+                                    .read<CartProvider>()
+                                    .decrementQuantity(index);
                               },
                             ),
                             IconButton(
                               icon: const Icon(Icons.delete),
                               onPressed: () {
-                                context.read<CartProvider>().removeFromCart(cart[index]);
+                                context
+                                    .read<CartProvider>()
+                                    .removeFromCart(cart[index]);
                               },
                             ),
                           ],
@@ -84,4 +90,3 @@ class CartPage extends StatelessWidget {
     );
   }
 }
-

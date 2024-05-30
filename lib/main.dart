@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'intro_screen.dart';
-import 'login.dart';
+//import 'login.dart';
 import 'catalogue.dart';
 import 'products.dart';
 import 'signup_page.dart';
